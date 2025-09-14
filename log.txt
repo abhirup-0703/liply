@@ -1,0 +1,21 @@
+1)Anubhab:-
+Date:-14/9/2025
+    Dependencies Installed:-
+        tailwindcss-animate: Added to support the complex animations used in the UI designs.
+
+    Core Folder Structure
+        A clean, feature-based architecture has been established to separate concerns:
+
+        src/app/: Contains only the routing logic and simple "container" pages.
+
+        /home: Route for the main landing page.
+
+        /play: Route for the game selection page.
+
+        src/features/: Contains all the complex UI logic and components.
+
+        /home: Components specific to the home page (HomePageLayout.tsx).
+
+        /play: Components specific to the play page (PlayPageLayout.tsx).
+
+        /shared/components: Reusable components used across the entire application (Header.tsx, Footer.tsx).
