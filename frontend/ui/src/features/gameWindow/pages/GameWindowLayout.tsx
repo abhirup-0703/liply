@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
-import Chessboard from "../components/game/ChessBoard";
-import GameControlPanel from "../components/game/GameControlPanel";
-import GameInfo from "../components/game/GameInfo";
-import ChatBox from "../components/game/ChatBox";
+import Chessboard from "../components/objects/ChessBoard";
+import GameControlPanel from "../components/objects/GameControlPanel";
+import GameInfo from "../components/objects/GameInfo";
+import ChatBox from "../components/objects/ChatBox";
 import { initialBoard } from "../data/gameData";
 
 
