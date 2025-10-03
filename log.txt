@@ -27,3 +27,4 @@ Date of push:-03/10/2025
     Added the baremetal code for Chessboard.
     Refactored the entire codebase to be modular.
     The notation scheme for the pieces are given in src/features/gameWindow/data/gameData
+    Changed the purple theme to green
