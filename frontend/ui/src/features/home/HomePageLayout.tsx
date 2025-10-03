@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Footer from '@/features/home/Footer';
 
 
 const HomePageLayout = () => {
@@ -120,7 +121,7 @@ const HomePageLayout = () => {
         </section>
       </main>
 
-      
+      <Footer />
     </div>
   );
 };

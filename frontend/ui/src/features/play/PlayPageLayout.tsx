@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-
 const PlayPageLayout = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [onlinePlayers] = useState(98145);
@@ -18,7 +17,6 @@ const PlayPageLayout = () => {
 
   const gameTypes = [
     {
-      title: 'Quick pairing',
       games: [
         { time: '1+0', type: 'Bullet', gradient: 'from-red-500/80 to-orange-500/80', hoverGradient: 'from-red-400/90 to-orange-400/90' },
         { time: '2+1', type: 'Bullet', gradient: 'from-red-500/80 to-orange-500/80', hoverGradient: 'from-red-400/90 to-orange-400/90' },
@@ -26,7 +24,6 @@ const PlayPageLayout = () => {
       ]
     },
     {
-      title: 'Lobby',
       games: [
         { time: '3+2', type: 'Blitz', gradient: 'from-yellow-500/80 to-amber-500/80', hoverGradient: 'from-yellow-400/90 to-amber-400/90' },
         { time: '5+0', type: 'Blitz', gradient: 'from-yellow-500/80 to-amber-500/80', hoverGradient: 'from-yellow-400/90 to-amber-400/90' },
@@ -34,7 +31,6 @@ const PlayPageLayout = () => {
       ]
     },
     {
-      title: 'Correspondence',
       games: [
         { time: '10+0', type: 'Rapid', gradient: 'from-green-500/80 to-emerald-500/80', hoverGradient: 'from-green-400/90 to-emerald-400/90' },
         { time: '10+5', type: 'Rapid', gradient: 'from-green-500/80 to-emerald-500/80', hoverGradient: 'from-green-400/90 to-emerald-400/90' },
@@ -50,7 +46,7 @@ const PlayPageLayout = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 relative overflow-hidden pt-16">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -65,25 +61,18 @@ const PlayPageLayout = () => {
           top: mousePosition.y - 192,
         }}
       ></div>
-      <main className="relative z-10 py-20">
+      <main className="relative z-10 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Page Title */}
-          <div className="text-center mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-in fade-in slide-in-from-bottom duration-1000">
-              Choose Your
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"> Game</span>
-            </h1>
-            <p className="text-xl text-gray-300 animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
-              Select a time control and start playing instantly
-            </p>
-          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold text-white text-center mb-12 animate-in fade-in slide-in-from-bottom duration-1000">
+            Quick Play
+          </h1>
+
           {/* Game Mode Sections */}
-          <div className="space-y-12 mb-16">
+          <div className="space-y-8 mb-16">
             {gameTypes.map((section, sectionIndex) => (
               <div key={sectionIndex} className="animate-in fade-in slide-in-from-bottom duration-1000" style={{ animationDelay: `${(sectionIndex + 1) * 200}ms` }}>
-                <h2 className="text-2xl font-bold text-white mb-6 text-center md:text-left">
-                  {section.title}
-                </h2>
+                
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {section.games.map((game, gameIndex) => (
                     <Link
@@ -205,4 +194,3 @@ const PlayPageLayout = () => {
 };
 
 export default PlayPageLayout;
-
