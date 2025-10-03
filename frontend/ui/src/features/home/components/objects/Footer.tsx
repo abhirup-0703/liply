@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import Link from 'next/link';
 
@@ -27,18 +26,14 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Support & Legal (Combined for brevity) */}
           <div className="col-span-1">
             <h3 className="text-white font-semibold mb-4">Support</h3>
             <ul className="space-y-3">
               <li><Link href="/help" className="text-gray-400 hover:text-purple-400 transition-colors duration-300 transform hover:translate-x-1 block">Help Center</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300 transform hover:translate-x-1 block">Contact Us</Link></li>
-              <li><Link href="/feedback" className="text-gray-400 hover:text-purple-400 transition-colors duration-300 transform hover:translate-x-1 block">Feedback</Link></li>
-              <li><Link href="/bug-report" className="text-gray-400 hover:text-purple-400 transition-colors duration-300 transform hover:translate-x-1 block">Report Bug</Link></li>
             </ul>
           </div>
-
-          {/* Legal */}
           <div className="col-span-1">
             <h3 className="text-white font-semibold mb-4">Legal</h3>
             <ul className="space-y-3">
@@ -49,15 +44,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Liply. All rights reserved.
-            </div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <span className="text-gray-400 text-sm">Made with ♥ for chess enthusiasts</span>
-            </div>
-          </div>
+        <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+          © {new Date().getFullYear()} Liply. All rights reserved. Made with ♥ for chess enthusiasts.
         </div>
       </div>
     </footer>
@@ -65,4 +53,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
