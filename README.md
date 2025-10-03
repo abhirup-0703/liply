@@ -1,1 +1,1 @@
-Chess app
+Chess app, 2025
