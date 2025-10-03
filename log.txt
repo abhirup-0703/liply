@@ -1,5 +1,5 @@
 1)Anubhab:-
-Date:-14/9/2025
+Date of push:-14/9/2025
     Dependencies Installed:-
         tailwindcss-animate: Added to support the complex animations used in the UI designs.
 
@@ -19,3 +19,11 @@ Date:-14/9/2025
         /play: Components specific to the play page (PlayPageLayout.tsx).
 
         /shared/components: Reusable components used across the entire application (Header.tsx, Footer.tsx).
+
+
+2)Abhirup:-
+Date of push:-03/10/2025
+    Modified the home and play pages to enhance UI design.
+    Added the baremetal code for Chessboard.
+    Refactored the entire codebase to be modular.
+    The notation scheme for the pieces are given in src/features/gameWindow/data/gameData
