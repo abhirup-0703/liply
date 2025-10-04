@@ -28,3 +28,10 @@ Date of push:-03/10/2025
     Refactored the entire codebase to be modular.
     The notation scheme for the pieces are given in src/features/gameWindow/data/gameData
     Changed the purple theme to green
+
+
+3)Abhirup:-
+Date of push:-04/10/2025
+    Added auth logic in front-end using clerk.
+    Reminder: .env.local files are not pushed. They are stored separately.
+    Updated Header to incorporate SignIn, SignUp, User icons and Settings.

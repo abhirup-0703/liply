@@ -1,6 +1,14 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
+import { Settings } from 'lucide-react';
 
 // Data for navigation items
 const navItems = [
@@ -85,7 +93,10 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* --- MODIFIED: Left section (Logo + Nav) --- */}
           <div className="flex items-center gap-8">
-            <Link href="/" className="text-2xl font-bold text-white hover:text-purple-300 transition-colors duration-300">
+            <Link
+              href="/"
+              className="text-2xl font-bold text-white hover:text-purple-300 transition-colors duration-300"
+            >
               ♛ liply
             </Link>
 
@@ -100,13 +111,21 @@ const Header = () => {
                   <Link
                     href={item.href}
                     className={`flex items-center px-4 py-2 rounded-lg transition-colors duration-300
-                      ${activeDropdown === item.name ? 'bg-white/10 text-white' : 'text-gray-200 hover:text-white hover:bg-white/10'}`}
+                      ${
+                        activeDropdown === item.name
+                          ? 'bg-white/10 text-white'
+                          : 'text-gray-200 hover:text-white hover:bg-white/10'
+                      }`}
                   >
                     {item.name}
                   </Link>
                   <div
                     className={`absolute top-full left-0 w-64 origin-top-left transition-all duration-200 ease-out
-                      ${activeDropdown === item.name ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                      ${
+                        activeDropdown === item.name
+                          ? 'opacity-100 scale-100'
+                          : 'opacity-0 scale-95 pointer-events-none'
+                      }`}
                   >
                     <div className="bg-slate-800 rounded-md shadow-lg p-1 mt-1">
                       {item.dropdown.map((dropdownItem) => (
@@ -115,7 +134,9 @@ const Header = () => {
                           href={dropdownItem.href}
                           className="flex items-center gap-3 px-3 py-1.5 text-gray-300 hover:text-white hover:bg-purple-600/30 rounded-sm transition-all duration-200"
                         >
-                          <span className="text-lg w-5 text-center">{dropdownItem.icon}</span>
+                          <span className="text-lg w-5 text-center">
+                            {dropdownItem.icon}
+                          </span>
                           <span>{dropdownItem.name}</span>
                         </Link>
                       ))}
@@ -128,12 +149,30 @@ const Header = () => {
 
           {/* --- Right section (User Actions) --- */}
           <div className="hidden md:flex items-center space-x-2">
-            <Link href="/signin" className="px-4 py-2 text-gray-200 hover:text-white transition-all duration-300 hover:bg-white/10 rounded-lg">
-              Sign In
-            </Link>
-            <Link href="/signup" className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Sign Up
-            </Link>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="px-4 py-2 text-gray-200 hover:text-white transition-all duration-300 hover:bg-white/10 rounded-lg">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-500 hover:to-green-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <div className="flex items-center gap-5">
+                <UserButton afterSignOutUrl="/home" />
+                <Link
+                  href="/settings"
+                  className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                  aria-label="Settings"
+                >
+                  <Settings size={20} />
+                </Link>
+              </div>
+            </SignedIn>
           </div>
 
           {/* Mobile Menu Button */}
@@ -143,12 +182,21 @@ const Header = () => {
               className="text-gray-200 hover:text-white p-2 focus:outline-none"
               aria-label="Toggle menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                  d={
+                    isMobileMenuOpen
+                      ? 'M6 18L18 6M6 6l12 12'
+                      : 'M4 6h16M4 12h16M4 18h16'
+                  }
                 />
               </svg>
             </button>
@@ -159,20 +207,26 @@ const Header = () => {
       {/* Mobile Menu */}
       <div
         className={`md:hidden absolute top-16 left-0 right-0 bg-slate-900/95 backdrop-blur-xl border-b border-purple-500/20 shadow-xl transition-transform duration-300 ease-in-out
-          ${isMobileMenuOpen ? 'transform translate-y-0' : 'transform -translate-y-[120%]'}`}
+          ${
+            isMobileMenuOpen
+              ? 'transform translate-y-0'
+              : 'transform -translate-y-[120%]'
+          }`}
       >
         <div className="px-4 pt-4 pb-8">
           <nav className="flex flex-col space-y-2">
             {navItems.map((item) => (
               <div key={item.name}>
-                <h3 className="px-4 py-2 text-purple-300 font-semibold">{item.name}</h3>
+                <h3 className="px-4 py-2 text-purple-300 font-semibold">
+                  {item.name}
+                </h3>
                 {item.dropdown.map((dItem) => (
-                   <Link
+                  <Link
                     key={dItem.name}
                     href={dItem.href}
                     className="flex items-center gap-4 pl-8 pr-4 py-2 text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
-                   >
+                  >
                     <span className="text-lg">{dItem.icon}</span>
                     <span>{dItem.name}</span>
                   </Link>
@@ -181,12 +235,30 @@ const Header = () => {
             ))}
           </nav>
           <div className="mt-6 pt-4 border-t border-purple-500/20 flex flex-col space-y-3">
-             <Link href="/signin" className="text-center px-4 py-2 text-gray-200 hover:text-white transition-all duration-300 bg-white/5 hover:bg-white/10 rounded-lg">
-              Sign In
-            </Link>
-            <Link href="/signup" className="text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300">
-              Sign Up
-            </Link>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="w-full text-center px-4 py-2 text-gray-200 hover:text-white transition-all duration-300 bg-white/5 hover:bg-white/10 rounded-lg">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="w-full text-center px-4 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-500 hover:to-green-500 transition-all duration-300">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <div className="flex justify-center items-center gap-5">
+                <UserButton afterSignOutUrl="/home" />
+                <Link
+                  href="/settings"
+                  className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                  aria-label="Settings"
+                >
+                  <Settings size={22} />
+                </Link>
+              </div>
+            </SignedIn>
           </div>
         </div>
       </div>
